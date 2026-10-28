@@ -1,0 +1,108 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyONb3LV/mCrg4ae8SED0u7A",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Chandana-Patnaik-108/AI-Lab-Record/blob/main/EXPERIMENT_04\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 2,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Zo8rcBgXIHU0",
+        "outputId": "6915bf8e-754f-4651-8904-730c5edcb6df"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Shortest Path: ['A', 'B', 'E', 'G']\n",
+            "Total Cost: 8\n"
+          ]
+        }
+      ],
+      "source": [
+        "graph = {\n",
+        "    'A': [('B', 1), ('C', 3)],\n",
+        "    'B': [('D', 3), ('E', 6)],\n",
+        "    'C': [('F', 5)],\n",
+        "    'D': [('G', 2)],\n",
+        "    'E': [('G', 1)],\n",
+        "    'F': [('G', 2)],\n",
+        "    'G': []\n",
+        "}\n",
+        "heuristic = {'A': 10, 'B': 8, 'C': 5, 'D': 7, 'E': 3, 'F': 6, 'G': 0}\n",
+        "\n",
+        "def astar(start, goal):\n",
+        "    # open_list will store tuples of (f_score, current_node)\n",
+        "    open_list = [(heuristic[start], start)]\n",
+        "    came_from = {}\n",
+        "\n",
+        "    # g_cost stores the cost of the cheapest path from start to n currently known\n",
+        "    g_cost = {start: 0}\n",
+        "\n",
+        "    # f_cost stores the estimated total cost from start to goal through n\n",
+        "    f_cost = {start: heuristic[start]}\n",
+        "\n",
+        "    while open_list:\n",
+        "        # Sort open_list to always expand the node with the lowest f_score\n",
+        "        open_list.sort(key=lambda x: x[0])\n",
+        "        current_f, current = open_list.pop(0)\n",
+        "\n",
+        "        if current == goal:\n",
+        "            # Reconstruct and return the path\n",
+        "            path = []\n",
+        "            while current in came_from:\n",
+        "                path.append(current)\n",
+        "                current = came_from[current]\n",
+        "            path.append(start)\n",
+        "            path.reverse()\n",
+        "            return path, g_cost[goal]\n",
+        "\n",
+        "        for neighbor, weight in graph[current]:\n",
+        "            tentative_g_cost = g_cost[current] + weight\n",
+        "\n",
+        "            if neighbor not in g_cost or tentative_g_cost < g_cost[neighbor]:\n",
+        "                came_from[neighbor] = current\n",
+        "                g_cost[neighbor] = tentative_g_cost\n",
+        "                f_cost[neighbor] = tentative_g_cost + heuristic[neighbor]\n",
+        "\n",
+        "                # If neighbor is not in open_list, add it\n",
+        "                if not any(node == neighbor for _, node in open_list):\n",
+        "                    open_list.append((f_cost[neighbor], neighbor))\n",
+        "\n",
+        "    return None, float('inf')\n",
+        "\n",
+        "# Run the A* algorithm from 'A' to 'G'\n",
+        "path, cost = astar('A', 'G')\n",
+        "print(f\"Shortest Path: {path}\")\n",
+        "print(f\"Total Cost: {cost}\")"
+      ]
+    }
+  ]
+}
