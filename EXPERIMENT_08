@@ -1,0 +1,123 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyOY93Xyb94fdDMoFebprVXu",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Chandana-Patnaik-108/AI-Lab-Record/blob/main/EXPERIMENT_08\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "EGRoR71iRfnL",
+        "outputId": "20d0641e-4272-4539-f7ab-72bfa6a299db"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Enter capacity of jug 1:4\n",
+            "Enter capacity of jug 2:3\n",
+            "Enter target volume:2\n",
+            "\n",
+            "Steps to reach the target:\n",
+            "(0, 0)\n",
+            "(0, 3)\n",
+            "(3, 0)\n",
+            "(3, 3)\n",
+            "(4, 2)\n"
+          ]
+        }
+      ],
+      "source": [
+        "from collections import deque\n",
+        "\n",
+        "#function to solve water jug probem using BFS\n",
+        "def water_jug(capacity1,capacity2,target):\n",
+        "  visited = set()\n",
+        "  q = deque() # Renamed deque to q to avoid shadowing the class\n",
+        "\n",
+        "  # initial state: (jug1_amount, jug2_amount, path_to_this_state)\n",
+        "  initial_state = (0, 0)\n",
+        "  q.append((initial_state[0], initial_state[1], [initial_state]))\n",
+        "  visited.add(initial_state)\n",
+        "\n",
+        "  while q:\n",
+        "    jug1, jug2, path = q.popleft()\n",
+        "\n",
+        "    # Check if target is reached\n",
+        "    if jug1 == target or jug2 == target:\n",
+        "      return path\n",
+        "\n",
+        "    # Generate next states\n",
+        "    next_states = []\n",
+        "\n",
+        "    # Fill jug 1\n",
+        "    next_states.append((capacity1, jug2))\n",
+        "    # Fill jug 2\n",
+        "    next_states.append((jug1, capacity2))\n",
+        "    # Empty jug 1\n",
+        "    next_states.append((0, jug2))\n",
+        "    # Empty jug 2\n",
+        "    next_states.append((jug1, 0))\n",
+        "\n",
+        "    # Pour jug1 to jug2\n",
+        "    pour_amount_1_to_2 = min(jug1, capacity2 - jug2)\n",
+        "    next_states.append((jug1 - pour_amount_1_to_2, jug2 + pour_amount_1_to_2))\n",
+        "\n",
+        "    # Pour jug2 to jug1\n",
+        "    pour_amount_2_to_1 = min(jug2, capacity1 - jug1)\n",
+        "    next_states.append((jug1 + pour_amount_2_to_1, jug2 - pour_amount_2_to_1))\n",
+        "\n",
+        "    for state_j1, state_j2 in next_states:\n",
+        "      # Ensure state is valid (within capacities and non-negative) and not visited\n",
+        "      if 0 <= state_j1 <= capacity1 and \\\n",
+        "         0 <= state_j2 <= capacity2 and \\\n",
+        "         (state_j1, state_j2) not in visited:\n",
+        "\n",
+        "        visited.add((state_j1, state_j2))\n",
+        "        q.append((state_j1, state_j2, path + [(state_j1, state_j2)]))\n",
+        "\n",
+        "  return None\n",
+        "\n",
+        "#main pogram\n",
+        "capacity1=int(input(\"Enter capacity of jug 1:\"))\n",
+        "capacity2=int(input(\"Enter capacity of jug 2:\"))\n",
+        "target=int(input(\"Enter target volume:\"))\n",
+        "\n",
+        "solution = water_jug(capacity1, capacity2, target) # Corrected variable names\n",
+        "if solution:\n",
+        "  print(\"\\nSteps to reach the target:\")\n",
+        "  for step in solution:\n",
+        "    print(step)\n",
+        "else:\n",
+        "  print(\"No solution found.\")"
+      ]
+    }
+  ]
+}
