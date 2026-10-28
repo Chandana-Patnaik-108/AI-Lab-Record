@@ -1,0 +1,92 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyMXeVrwBrgtEy+A3TmrUiqm",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Chandana-Patnaik-108/AI-Lab-Record/blob/main/EXPERIMENT_05\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#minmax algorithm\n",
+        "def minmax(depth,nodeIndex,isMax,scores,height):\n",
+        "  #base case: left node reach\n",
+        "  if depth==height:\n",
+        "    return scores[nodeIndex]\n",
+        "\n",
+        "  if isMax:\n",
+        "    return max(minmax(depth+1,nodeIndex*2,False,scores,height),minmax(depth+1,nodeIndex*2+1,False,scores,height))\n",
+        "  else:\n",
+        "    return min(minmax(depth+1,nodeIndex*2,True,scores,height),minmax(depth+1,nodeIndex*2+1,True,scores,height))\n",
+        "\n",
+        "#main program\n",
+        "scores= list(map(int,input(\"Enter 8 leaf node value\").split()))\n",
+        "height=3\n",
+        "result=minmax(0,0,True,scores,height)\n",
+        "print(\"The optimal value is\",result)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "GrLv2XdfAsPK",
+        "outputId": "271e6372-b7b5-468b-fab5-4dc76842bbb8"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Enter 8 leaf node value3  5 2 9 12 5 5 23 23\n",
+            "The optimal value is 12\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def minmax(depth,nodeIndex,isMax,scores,height):\n",
+        "  if depth==height:\n",
+        "    return scores[nodeIndex]\n",
+        "  if isMax:\n",
+        "    return max(minmax(depth+1,nodeIndex*2,False,scores,height),minmax(depth+1,nodeIndex*2+1,False,scores,height))\n",
+        "  else:\n",
+        "    return min(minmax(depth+1,nodeIndex*2,True,scores,height),minmax(depth+1,nodeIndex*2+1,True,scores,height))\n",
+        "\n",
+        "  #mainprogram\n",
+        "  scores=list(map(int,input(\"Enter 8 leaf node value\").split()))\n",
+        "  height=3\n",
+        "  result=minmax(0,0,True,scores,height)\n",
+        "  print(\"The optimal value is\",result)"
+      ],
+      "metadata": {
+        "id": "xVabF3LzAmhT"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
