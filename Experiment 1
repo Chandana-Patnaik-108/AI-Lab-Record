@@ -1,0 +1,301 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyPKdPgVnqCfC1P3ILtcF9qP",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Chandana-Patnaik-108/AI-Lab-Record/blob/main/Experiment%201\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 2,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "uBaJ81nw4zEj",
+        "outputId": "a81efcd4-1fbf-4ada-dc6b-dc3e4e6f74b0"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Enter first integer: 12\n",
+            "Enter second integer: 77\n",
+            "Addition = 89\n",
+            "Subtraction = -65\n",
+            "Multiplication = 924\n",
+            "Division = 0.15584415584415584\n",
+            "Floor Division = 0\n",
+            "Modulus = 12\n",
+            "Exponentiation = 125013221181152020370491778891661533753852373277653617092455254756661048380900769792\n"
+          ]
+        }
+      ],
+      "source": [
+        "#Arithmetic Operations on Two Integers\n",
+        "a = int(input(\"Enter first integer: \"))\n",
+        "b = int(input(\"Enter second integer: \"))\n",
+        "\n",
+        "print(\"Addition =\", a + b)\n",
+        "print(\"Subtraction =\", a - b)\n",
+        "print(\"Multiplication =\", a * b)\n",
+        "print(\"Division =\", a / b)\n",
+        "print(\"Floor Division =\", a // b)\n",
+        "print(\"Modulus =\", a % b)\n",
+        "print(\"Exponentiation =\", a ** b)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Area of a Triangle\n",
+        "a = float(input(\"Enter first side: \"))\n",
+        "b = float(input(\"Enter second side: \"))\n",
+        "c = float(input(\"Enter third side: \"))\n",
+        "\n",
+        "s = (a + b + c) / 2\n",
+        "\n",
+        "area = (s * (s-a) * (s-b) * (s-c)) ** 0.5\n",
+        "\n",
+        "print(\"Area of Triangle =\", area)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "ViQuxto15P5w",
+        "outputId": "63ed24dc-fd53-45a8-fb5f-887baef0a083"
+      },
+      "execution_count": 3,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Enter first side: 12\n",
+            "Enter second side: 12\n",
+            "Enter third side: 12\n",
+            "Area of Triangle = 62.353829072479584\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Binary, Octal and Hexadecimal Equivalents\n",
+        "n = int(input(\"Enter an integer number: \"))\n",
+        "\n",
+        "print(\"Binary equivalent =\", bin(n))\n",
+        "print(\"Octal equivalent =\", oct(n))\n",
+        "print(\"Hexadecimal equivalent =\", hex(n))\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "o8IaEDiv5jZ2",
+        "outputId": "32c3f5c5-3a20-485c-ca94-cb44548ac50a"
+      },
+      "execution_count": 4,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Enter an integer number: 12\n",
+            "Binary equivalent = 0b1100\n",
+            "Octal equivalent = 0o14\n",
+            "Hexadecimal equivalent = 0xc\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Roots of a Quadratic Equation\n",
+        "import cmath\n",
+        "\n",
+        "a = float(input(\"Enter coefficient a: \"))\n",
+        "b = float(input(\"Enter coefficient b: \"))\n",
+        "c = float(input(\"Enter coefficient c: \"))\n",
+        "\n",
+        "d = b**2 - 4*a*c\n",
+        "\n",
+        "root1 = (-b + cmath.sqrt(d)) / (2*a)\n",
+        "root2 = (-b - cmath.sqrt(d)) / (2*a)\n",
+        "\n",
+        "print(\"First root =\", root1)\n",
+        "print(\"Second root =\", root2)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "NG59w9cc5wYE",
+        "outputId": "5202f95e-3d63-4249-e161-083adbe27d35"
+      },
+      "execution_count": 5,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Enter coefficient a: 12\n",
+            "Enter coefficient b: 12\n",
+            "Enter coefficient c: 12\n",
+            "First root = (-0.5+0.8660254037844387j)\n",
+            "Second root = (-0.5-0.8660254037844387j)\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Convert Fahrenheit to Celsius\n",
+        "f = float(input(\"Enter temperature in Fahrenheit: \"))\n",
+        "\n",
+        "c = (f - 32) * 5 / 9\n",
+        "\n",
+        "print(\"Temperature in Celsius =\", c)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "bt1nAwFI6H0b",
+        "outputId": "c21165d7-7f51-4654-86da-506d4f79e3ac"
+      },
+      "execution_count": 6,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Enter temperature in Fahrenheit: 12\n",
+            "Temperature in Celsius = -11.11111111111111\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# . WAP to convert distance in meters to Kilometers.\n",
+        "m = float(input(\"Enter distance in meters: \"))\n",
+        "\n",
+        "km = m / 1000\n",
+        "\n",
+        "print(\"Distance in Kilometers =\", km)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "PhaGquh16Y63",
+        "outputId": "31dbf044-a8d4-4f76-f335-82d01b9c8dbd"
+      },
+      "execution_count": 7,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Enter distance in meters: 12\n",
+            "Distance in Kilometers = 0.012\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Convert Minutes into Hours and Minutes\n",
+        "minutes = int(input(\"Enter time in minutes: \"))\n",
+        "\n",
+        "hours = minutes // 60\n",
+        "remaining_minutes = minutes % 60\n",
+        "print(\"Time =\", hours, \"Hours and\", remaining_minutes, \"Minutes\")\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Bhk2WixT6oaD",
+        "outputId": "221bb109-cfab-407f-9b58-b52528abcd88"
+      },
+      "execution_count": 8,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Enter time in minutes: 12\n",
+            "Time = 0 Hours and 12 Minutes\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Swap Two Numbers Using Bitwise XOR Operator\n",
+        "a = int(input(\"Enter first number: \"))\n",
+        "b = int(input(\"Enter second number: \"))\n",
+        "\n",
+        "a = a ^ b\n",
+        "b = a ^ b\n",
+        "a = a ^ b\n",
+        "\n",
+        "print(\"After swapping:\")\n",
+        "print(\"First number =\", a)\n",
+        "print(\"Second number =\", b)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "d-6vwq-z7CLF",
+        "outputId": "e2b0300c-e85e-48e8-a102-87b35d5be62e"
+      },
+      "execution_count": 9,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Enter first number: 12\n",
+            "Enter second number: 12\n",
+            "After swapping:\n",
+            "First number = 12\n",
+            "Second number = 12\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
